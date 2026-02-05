@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MODX FREAK</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="background"></div>
+
+<div class="login-card">
+
+  <!-- LOGO -->
+  <img src="logo.png" class="logo" alt="MODX FREAK">
+
+  <h1>MODX FREAK</h1>
+  <p>Premium Streaming Experience</p>
+
+ <form onsubmit="login(event)">
+  <input type="text" placeholder="Username or Email" required>
+  <input type="password" placeholder="Password" required>
+  <button type="submit">Sign In</button>
+</form>
+
+<script>
+function login(e) {
+  e.preventDefault(); // stop refresh
+  window.location.href = "dashboard.html";
+}
+</script>
+
+
+  <span class="small-text">
+    New here? <a href="#">Create account</a>
+  </span>
+
+</div>
+
+</body>
+</html>
+
