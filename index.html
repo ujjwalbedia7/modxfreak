@@ -1,59 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="UTF-8">
-<title>MODX FREAK</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>MODXFREAK – Premium Gaming Experience</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <meta name="description" content="MODXFREAK – Premium Streaming, Mods & Gaming Tools">
+  <meta name="robots" content="index, follow">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- GLOBAL ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      color: #e5e7eb;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ---------- LOADER ---------- */
+    #page-loader {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    #page-loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 36px 44px;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(0,247,255,0.15);
+    }
+
+    .loader-box img {
+      width: 110px;
+      animation: float 2.2s ease-in-out infinite;
+    }
+
+    .loader-line {
+      width: 130px;
+      height: 3px;
+      background: linear-gradient(90deg, #00f7ff, #0077ff);
+      margin: 18px auto;
+      border-radius: 10px;
+      animation: loading 1.4s infinite ease-in-out;
+    }
+
+    .loader-box p {
+      font-size: 13px;
+      letter-spacing: 1.2px;
+      opacity: 0.8;
+    }
+
+    @keyframes loading {
+      0% { transform: scaleX(0.3); opacity: 0.4; }
+      50% { transform: scaleX(1); opacity: 1; }
+      100% { transform: scaleX(0.3); opacity: 0.4; }
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* ---------- NAVBAR ---------- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 8%;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    nav img {
+      width: 46px;
+    }
+
+    .nav-links a {
+      margin: 0 16px;
+      opacity: 0.85;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: #00f7ff;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      background: linear-gradient(135deg, #00f7ff, #0077ff);
+      border-radius: 12px;
+      border: none;
+      color: #000;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      height: 88vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 10%;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 5.2rem);
+      background: linear-gradient(90deg, #00f7ff, #ffffff);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      margin: 18px 0 30px;
+      opacity: 0.85;
+      font-size: 1.1rem;
+    }
+
+    /* ---------- FEATURES ---------- */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 26px;
+      padding: 80px 8%;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      transition: 0.35s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 30px rgba(0,247,255,0.18);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #00f7ff;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      text-align: center;
+      padding: 28px;
+      opacity: 0.6;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links a { display: none; }
+    }
+  </style>
 </head>
+
+<body>
+
+<!-- LOADER -->
+<div id="page-loader">
+  <div class="loader-box">
+    <img src="logo.webp" alt="MODXFREAK Logo">
+    <div class="loader-line"></div>
+    <p>LOADING MODXFREAK</p>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <img src="logo.webp" alt="Logo">
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#">Features</a>
+    <a href="#">Pricing</a>
+    <button class="btn">Sign In</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>MODXFREAK</h1>
+  <p>Premium Streaming • Mods • Gaming Tools</p>
+  <button class="btn">Get Started</button>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="card">
+    <h3>⚡ Ultra Fast</h3>
+    <p>Optimized servers for smooth premium performance.</p>
+  </div>
+  <div class="card">
+    <h3>🔐 Secure</h3>
+    <p>Modern security with encrypted access.</p>
+  </div>
+  <div class="card">
+    <h3>🎮 Premium Mods</h3>
+    <p>Exclusive tools & mods built for gamers.</p>
+  </div>
+</section>
+
+<footer>
+  © 2026 MODXFREAK. All rights reserved.
+</footer>
+
 <script>
   window.addEventListener("load", () => {
     setTimeout(() => {
       document.getElementById("page-loader").classList.add("hide");
-    }, 800); // smooth delay
+    }, 900);
   });
 </script>
-  
-<body>
-<!-- Loader -->
-<div id="page-loader">
-  <div class="loader-glass">
-    <img src="logo.webp" alt="MODXFREAK Logo" class="loader-logo">
-    <div class="loader-line"></div>
-    <p>Loading MODXFREAK</p>
-  </div>
-</div>
-
-<div class="background"></div>
-
-<div class="login-card">
-
-  <!-- LOGO -->
-  <img src="logo.webp" class="logo" alt="MODX FREAK">
-
-  <h1>MODX FREAK</h1>
-  <p>Premium Streaming Experience</p>
-
- <form onsubmit="login(event)">
-  <input type="text" placeholder="Username or Email" required>
-  <input type="password" placeholder="Password" required>
-  <button type="submit">Sign In</button>
-</form>
-
-<script>
-function login(e) {
-  e.preventDefault(); // stop refresh
-  window.location.href = "dashboard.html";
-}
-</script>
-
-
-  <span class="small-text">
-    New here? <a href="#">Create account</a>
-  </span>
-
-</div>
 
 </body>
 </html>
-
