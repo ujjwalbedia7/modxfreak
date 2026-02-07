@@ -6,6 +6,14 @@
 <title>MODX FREAK</title>
 <link rel="stylesheet" href="style.css">
 </head>
+<script>
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      document.getElementById("page-loader").classList.add("hide");
+    }, 800); // smooth delay
+  });
+</script>
+  
 <body>
 <!-- Loader -->
 <div id="page-loader">
