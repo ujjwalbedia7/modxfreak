@@ -2,245 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MODXFREAK – Premium Gaming Experience</title>
+  <title>MODXFREAK</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO -->
-  <meta name="description" content="MODXFREAK – Premium Streaming, Mods & Gaming Tools">
-  <meta name="robots" content="index, follow">
-
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* ---------- GLOBAL ---------- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', system-ui, sans-serif;
-    }
-
-    body {
-      color: #e5e7eb;
-      min-height: 100vh;
-      overflow-x: hidden;
-      background: #020617;
-    }
-
-    a { text-decoration: none; color: inherit; }
-
-    /* ---------- BACKGROUND LAYER ---------- */
-    .background {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background:
-        radial-gradient(circle at top, rgba(0,247,255,0.12), transparent 40%),
-        linear-gradient(180deg, #020617, #020617);
-      background-image:
-        url("background.webp");
-      background-size: cover;
-      background-position: center;
-      filter: blur(4px) brightness(0.6);
-    }
-
-    /* optional grain */
-    .background::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: url("https://grainy-gradients.vercel.app/noise.svg");
-      opacity: 0.15;
-    }
-
-    /* ---------- LOADER ---------- */
-    #page-loader {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      backdrop-filter: blur(16px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
-    }
-
-    #page-loader.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loader-box {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: 36px 44px;
-      border-radius: 22px;
-      text-align: center;
-      box-shadow: 0 0 40px rgba(0,247,255,0.2);
-    }
-
-    .loader-box img {
-      width: 110px;
-      animation: float 2.2s ease-in-out infinite;
-    }
-
-    .loader-line {
-      width: 130px;
-      height: 3px;
-      background: linear-gradient(90deg, #00f7ff, #0077ff);
-      margin: 18px auto;
-      border-radius: 10px;
-      animation: loading 1.4s infinite ease-in-out;
-    }
-
-    .loader-box p {
-      font-size: 13px;
-      letter-spacing: 1.2px;
-      opacity: 0.8;
-    }
-
-    @keyframes loading {
-      0% { transform: scaleX(0.3); opacity: 0.4; }
-      50% { transform: scaleX(1); opacity: 1; }
-      100% { transform: scaleX(0.3); opacity: 0.4; }
-    }
-
-    @keyframes float {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    /* ---------- NAVBAR ---------- */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 8%;
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    nav img {
-      width: 46px;
-    }
-
-    .nav-links a {
-      margin: 0 16px;
-      opacity: 0.85;
-      transition: 0.3s;
-    }
-
-    .nav-links a:hover {
-      opacity: 1;
-      color: #00f7ff;
-    }
-
-    .btn {
-      padding: 10px 18px;
-      background: linear-gradient(135deg, #00f7ff, #0077ff);
-      border-radius: 12px;
-      border: none;
-      color: #000;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(0,247,255,0.4);
-    }
-
-    /* ---------- HERO ---------- */
-    .hero {
-      height: 88vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 10%;
-    }
-
-    .hero h1 {
-      font-size: clamp(3rem, 8vw, 5.2rem);
-      background: linear-gradient(90deg, #00f7ff, #ffffff);
-      -webkit-background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 40px rgba(0,247,255,0.35);
-    }
-
-    .hero p {
-      margin: 18px 0 30px;
-      opacity: 0.9;
-      font-size: 1.1rem;
-    }
-
-    /* ---------- FEATURES ---------- */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 26px;
-      padding: 80px 8%;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 30px;
-      backdrop-filter: blur(14px);
-      transition: 0.35s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 0 40px rgba(0,247,255,0.25);
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      color: #00f7ff;
-    }
-
-    /* ---------- FOOTER ---------- */
-    footer {
-      text-align: center;
-      padding: 28px;
-      opacity: 0.6;
-      font-size: 14px;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links a { display: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- BACKGROUND -->
-<div class="background"></div>
-
 <!-- LOADER -->
 <div id="page-loader">
   <div class="loader-box">
-    <img src="logo.webp" alt="MODXFREAK Logo">
+    <h2>MODXFREAK</h2>
     <div class="loader-line"></div>
-    <p>LOADING MODXFREAK</p>
+    <p>Loading experience...</p>
   </div>
 </div>
 
-<!-- NAVBAR -->
+<!-- BACKGROUND -->
+<div class="background"></div>
+
+<!-- NAV -->
 <nav>
-  <img src="logo.webp" alt="Logo">
-  <div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#">Features</a>
-    <a href="#">Pricing</a>
-    <button class="btn">Sign In</button>
-  </div>
+  <h3>MODXFREAK</h3>
+  <button class="btn">Sign In</button>
 </nav>
 
 <!-- HERO -->
@@ -250,11 +36,12 @@
   <button class="btn">Get Started</button>
 </section>
 
-<!-- FEATURES -->
-<section class="features">
-  <div class="card">
-    <h3>⚡ Ultra Fast</h3>
-    <p>Optimized servers for smooth premium performance.</p>
-  </div>
-  <div class="card">
-    <h3>🔐 Sec
+<script>
+  window.addEventListener("load", () => {
+    const loader = document.getElementById("page-loader");
+    loader.classList.add("hide");
+  });
+</script>
+
+</body>
+</html>
